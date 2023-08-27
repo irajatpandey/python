@@ -13,3 +13,16 @@ x, y, z = fruits
 print(x)
 print(y)
 print(z)
+
+
+m = 1
+n = 2
+
+print(id(m))
+print(id(n))
+
+m = 2
+
+print()
+print(id(m))
+print(id(n))

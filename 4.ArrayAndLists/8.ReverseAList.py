@@ -4,7 +4,6 @@ def reverseList(li):
         li[i], li[length - i - 1] = li[length - i - 1], li[i]
     return
 
-
 li = [1, 2, 3, 4, 5, 6, 7, 8 ,9, 10]
 print(li)
 

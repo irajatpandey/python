@@ -1,5 +1,12 @@
 def find_union(arr1: list, arr2: list) -> list:
-    pass
+    output = set()
+
+    for item in arr1:
+        output.add(item)
+
+    for item in arr2:
+        output.add(item)
+    return list(output)
 
 if __name__ == "__main__":
     # Example data

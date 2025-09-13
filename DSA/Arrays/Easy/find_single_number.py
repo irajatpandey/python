@@ -1,5 +1,8 @@
 def find_single_number(nums: list) -> int:
-    pass
+    ans = 0
+    for item in nums:
+        ans = ans ^ item
+    return ans
 
 if __name__ == "__main__":
     # Example data

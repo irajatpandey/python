@@ -1,5 +1,14 @@
 def max_consecutive_ones(nums: list) -> int:
-    pass
+    max_ones = 0 
+    count = 0
+
+    for item in nums:
+        if item == 1:
+            count += 1
+        else:
+            count = 0
+        max_ones = max(max_ones, count)
+    return max_ones
 
 if __name__ == "__main__":
     # Example data

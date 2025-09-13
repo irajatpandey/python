@@ -1,9 +1,19 @@
-def is_array_sorted(li: list) -> bool:
-    pass
+def second_largest_element(li: list) -> int:
+    if len(li) <= 1:
+        return li[0]
+    
+    largest = float('-inf')
+    second_largest = float('-inf')
+
+    for item in li:
+        if largest < item:
+            second_largest = largest
+            largest = item
+        if largest != item and second_largest < item:
+            second_largest = item
+    return second_largest
 
 if __name__ == "__main__":
-    sorted_array = [1, 2, 3, 4, 5]
-    unsorted_array = [10, 5, 20, 15]
-
-    print(f"Is {sorted_array} sorted? {is_array_sorted(sorted_array)}")
-    print(f"Is {unsorted_array} sorted? {is_array_sorted(unsorted_array)}")
+    numbers = [10, 5, 20, 15, 25]
+    second_largest = second_largest_element(numbers)
+    print(f"The second largest element is: {second_largest}")

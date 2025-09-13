@@ -1,3 +1,5 @@
+#Time Complexity: O(n)
+#Space Complexity: O(n)
 def two_sum(nums: list, target: int) -> list:
     lookup = {}
     output = []

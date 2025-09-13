@@ -1,5 +1,8 @@
 def linear_search(li: list, target: int) -> int:
-    pass
+    for i in range(len(li)):
+        if li[i] == target:
+            return i
+    return -1
 
 if __name__ == "__main__":
     numbers = [5, 10, 15, 20, 25]

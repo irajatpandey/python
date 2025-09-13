@@ -1,10 +1,17 @@
-def linear_search(li: list, target: int) -> int:
-    pass
+def left_rotate_array(li: list) -> list:
+    """
+    Rotates an array to the left by one position.
+    """
+
+    first_element = li[0]
+    for i in range(len(li) - 1):
+        li[i] = li[i + 1]
+    li[-1] = first_element
+    
+    return li
 
 if __name__ == "__main__":
-    numbers = [5, 10, 15, 20, 25]
-    target1 = 15
-    target2 = 30
-
-    print(f"Index of {target1} is: {linear_search(numbers, target1)}")
-    print(f"Index of {target2} is: {linear_search(numbers, target2)}")
+    # Driver function
+    numbers = [1, 2, 3, 4, 5]
+    rotated_array = left_rotate_array(numbers)
+    print(f"The rotated array is: {rotated_array}")

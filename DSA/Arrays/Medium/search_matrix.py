@@ -7,7 +7,11 @@ def searchMatrix(matrix: List[List[int]], target: int) -> bool:
     - Each row is sorted in non-decreasing order.
     - The first integer of each row is greater than the last integer of the previous row.
     """
-    pass
+    for ls in matrix:
+        for item in ls:
+            if item == target:
+                return True
+    return False 
 
 if __name__ == "__main__":
     matrix1 = [

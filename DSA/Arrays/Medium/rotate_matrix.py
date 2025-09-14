@@ -4,7 +4,17 @@ def rotate_matrix(matrix: List[List[int]]) -> None:
     """
     Rotates a square matrix by 90 degrees in a clockwise direction in-place.
     """
-    pass
+    n = len(matrix)
+    
+    # Step 1: Transpose the matrix
+    # Swap elements across the main diagonal
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    # Step 2: Reverse each row
+    for row in matrix:
+        row.reverse()
 
 if __name__ == "__main__":
     matrix = [

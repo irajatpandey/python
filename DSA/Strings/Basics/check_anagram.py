@@ -2,7 +2,22 @@ def are_anagrams(s1: str, s2: str) -> bool:
     """
     Checks if two strings are anagrams of each other.
     """
-    pass
+    cache = {}
+    for char in s1:
+        cache[char] = cache.get(char, 0) + 1
+    
+    for char in s2:
+        if char in cache:
+            cache[char] -= 1
+        else:
+            return False
+    
+    for count in cache.values():
+        if count != 0:
+            return False
+    return True
+    
+
 
 if __name__ == "__main__":
     s1, s2 = "listen", "silent"

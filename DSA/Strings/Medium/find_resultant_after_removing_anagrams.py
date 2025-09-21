@@ -18,22 +18,20 @@ def isAnagram(s1 : str, s2: str) -> bool:
         
     return True
 def removeAnagrams(words: List[str]) -> List[str]:  
-
-    
     if not words:
         return []
     
-    n = len(words)
-    i = 1
-    s3 = words[0]
-
-    while i < len(words):
-        if isAnagram(s3, words[i]):
-            words.pop(i)
-        else:
-            s3 = words[i]
-            i += 1
-    return words
+    result = [words[0]] # Start with the first word
+    
+    for i in range(1, len(words)):
+        current_word = words[i]
+        last_word_in_result = result[-1]
+        
+        # Compare current word with the last word added to the result list
+        if not isAnagram(current_word, last_word_in_result):
+            result.append(current_word)
+            
+    return result
 
 def run_tests():
     tests = [

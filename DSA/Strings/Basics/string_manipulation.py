@@ -2,13 +2,14 @@ def reverse_words(s: str) -> str:
     """
     Reverses the order of words in a given string.
     """
-    pass
+    pass    
 
 def is_palindrome(s: str) -> bool:
     """
     Checks if a given string is a palindrome.
     """
-    pass
+    temp = ''.join(reversed(s))
+    return temp == s
 
 if __name__ == "__main__":
     # Example for reversing words

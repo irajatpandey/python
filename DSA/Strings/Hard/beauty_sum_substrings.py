@@ -2,8 +2,15 @@
 
 class Solution:
     def beautySum(self, s: str) -> int:
-        # TODO: implement
-        return 0
+        count = 0
+        n = len(s)
+        for i in range(n):
+            freq = {}
+            for j in range(i, n):
+                freq[s[j]] = freq.get(s[j], 0) + 1   
+                count += max(freq.values()) - min(freq.values())
+
+        return count
 
 if __name__ == "__main__":
     sol = Solution()

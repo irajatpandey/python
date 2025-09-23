@@ -9,5 +9,5 @@ if __name__ == "__main__":
     sol = Solution()
     tests = ["babad", "cbbd", "a", "ac", "forgeeksskeegfor"]
     for t in tests:
-        print(f"in : {t}")  # [web:102][web:100]
-        print(f"out: {sol.longestPalindrome(t)}")  # [web:102][web:100]
+        print(f"in : {t}") 
+        print(f"out: {sol.longestPalindrome(t)}")

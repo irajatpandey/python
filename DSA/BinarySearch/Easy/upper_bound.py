@@ -1,7 +1,22 @@
 # upper_bound.py
-def upper_bound(arr, x):
+def upper_bound(self, arr, x):
     """First index i where arr[i] > x; return len(arr) if none."""
-    raise NotImplementedError
+
+    index = -1
+    start = 0
+    end = len(arr) - 1
+
+    while start <= end:
+        mid = start + (end - start) // 2
+        if arr[mid] == x:
+            index = mid
+            start = mid + 1
+        elif arr[mid] > x:
+            end = mid - 1
+        else:
+            start = mid + 1
+    return index
+
 
 def main():
     arr = [1, 2, 4, 4, 5]
@@ -18,4 +33,4 @@ if __name__ == "__main__":
         for arr, x, expected in cases:
             assert upper_bound(arr, x) == expected
     test()
-    # main()
+    main()

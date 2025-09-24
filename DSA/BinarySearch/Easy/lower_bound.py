@@ -1,18 +1,20 @@
 # lower_bound.py
-def lower_bound(arr, x):
+def lower_bound(self, arr, x):
     """First index i where arr[i] >= x; return len(arr) if none."""
     
-    index = None
+    index = -1
     start = 0
     end = len(arr) - 1
 
     while start <= end:
         mid = start + (end - start) // 2
-        if arr[mid] >= x:
+        if arr[mid] == x:
             index = mid
             end = mid - 1
         elif arr[mid] < x:
             start = mid + 1
+        else: 
+            end = mid - 1
     return index
 
 

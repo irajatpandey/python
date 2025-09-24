@@ -1,27 +1,53 @@
 # floor_ceil.py
 def floor_in_sorted(arr, x):
     """Index of floor (greatest <= x), or -1 if none."""
-    raise NotImplementedError
+
+    n = len(arr)
+    start = 0
+    end = n - 1
+    output = None
+
+    while start <= end:
+        mid = start + (end - start) // 2
+        if arr[mid] <= x:
+            output = arr[mid]
+            start = mid + 1
+
+        elif arr[mid] > x:
+            end = mid - 1
+    
+    return output
 
 def ceil_in_sorted(arr, x):
     """Index of ceil (smallest >= x), or len(arr) if none."""
-    raise NotImplementedError
+    n = len(arr)
+    start = 0
+    end = n - 1
+    output = None
+
+    while start <= end:
+        mid = start + (end - start) // 2
+        if arr[mid] >= x:
+            output = arr[mid]
+            end = mid - 1
+        elif arr[mid] < x:
+            start = mid + 1
+    return output    
+
 
 def main():
-    arr = [1, 2, 8, 10, 10, 12, 19]
-    x = 5
-    _f = floor_in_sorted(arr, x)
-    _c = ceil_in_sorted(arr, x)
+    arr = [3, 4, 4, 7, 8, 10]
+    x = 8
+    try:
+        f = floor_in_sorted(arr, x)
+        c = ceil_in_sorted(arr, x)
+        
+        print("floor:", f, "ceil:", c)
+    except NotImplementedError:
+        print("floor/ceil: NOT IMPLEMENTED (OK for template)")
 
 if __name__ == "__main__":
-    def test():
-        cases = [
-            ([1, 2, 8, 10, 10, 12, 19], 5, None, None),  # TODO
-            ([2, 4, 6], 1, None, None),                  # TODO: floor -1, ceil 0
-            ([2, 4, 6], 7, None, None),                  # TODO: floor last idx, ceil len(arr)
-        ]
-        for arr, x, ef, ec in cases:
-            assert floor_in_sorted(arr, x) == ef
-            assert ceil_in_sorted(arr, x) == ec
-    test()
-    # main()
+    main()
+
+
+

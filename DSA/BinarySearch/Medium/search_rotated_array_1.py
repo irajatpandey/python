@@ -1,6 +1,24 @@
-def search_rotated(arr: list[int], target: int) -> int:
-    # Your solution logic goes here
-    pass
+def search_rotated(nums: list[int], target: int) -> int:
+
+    start = 0
+    end = len(nums) - 1
+
+    while start <= end:
+        mid = start + (end - start) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[start] <= nums[mid]:
+            if nums[start] <= target and target <= nums[mid]:
+                end = mid - 1
+            else:
+                start = mid + 1
+        else:
+            if nums[mid] <= target and target <= nums[end]:
+                start = mid + 1
+            else:
+                end = mid - 1
+        
+    return -1
 
 def run_tests_search_1():
     test_cases = [
@@ -16,3 +34,6 @@ def run_tests_search_1():
         print(f"Array: {arr}, Target: {target}")
         print(f"Expected: {expected}, Got: {result}")
         print("-" * 20)
+
+
+run_tests_search_1()

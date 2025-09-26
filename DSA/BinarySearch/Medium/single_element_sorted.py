@@ -1,6 +1,21 @@
-def find_single_element(arr: list[int]) -> int:
-    # Your solution logic goes here
-    pass
+def find_single_element(nums: list[int]) -> int:
+    n = len(nums)
+    if n == 1: return nums[0]
+    if nums[0] != nums[1]: return nums[0]
+    if nums[n - 1] != nums[n - 2]: return nums[n - 1]
+
+    start = 1
+    end = n - 2
+    while start <= end:
+        mid = start + (end - start) // 2
+        if nums[mid] != nums[mid - 1] and nums[mid] != nums[mid + 1]:
+            return nums[mid]
+        
+        if (mid % 2 != 0 and nums[mid] == nums[mid - 1]) or (mid % 2 == 0 and nums[mid] == nums[mid + 1]):
+            start = mid + 1
+        else:
+            end = mid - 1
+    return -1
 
 def run_tests_single():
     test_cases = [
@@ -16,3 +31,5 @@ def run_tests_single():
         print(f"Array: {arr}")
         print(f"Expected: {expected}, Got: {result}")
         print("-" * 20)
+
+run_tests_single()

@@ -1,5 +1,10 @@
 def search_rotated_duplicates(arr: list[int], target: int) -> bool:
     # Your solution logic goes here
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = start + (end - start) // 2
+        if arr[start] <= target 
     pass
 
 def run_tests_search_2():

@@ -1,21 +1,47 @@
-# gas_station_distance.py - Minimize max distance to gas station
+def minMaxDist(self, stations, k):
+        def check(stations, k, max_dist) -> bool:
+            stations_needed = 0
+            
+            # Note: We must ensure max_dist (mid) is not 0 for division.
+            if max_dist == 0:
+                # If mid is 0, we need infinite stations unless all gaps are 0.
+                return False 
+                
+            for i in range(len(stations) - 1):
+                gap = stations[i + 1] - stations[i]
+                
+                # If gap exceeds the max allowed distance, calculate new stations required.
+                if gap > max_dist:
+                    # Required Stations = ceil(Gap / Max_Dist) - 1
+                    new_stations_count = math.ceil(gap / max_dist) - 1
+                    stations_needed += new_stations_count
+                    
+            return stations_needed <= k
 
-def min_max_gas_distance(stations: list[int], k: int) -> float:
-    """
-    Stub function to minimize the maximum distance between adjacent gas stations 
-    after adding K new gas stations.
-    (Solution logic goes here)
-    """
-    # Example: stations=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k=9. Result: 0.5
-    return 0.0
-
-if __name__ == "__main__":
-    test_cases = [
-        ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9, 0.5),
-        ([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 9, 5.0),
-        ([1, 2, 4, 8, 10], 1, 3.0) # Add a station between 4 and 8. Max dist becomes 3.
-    ]
-    
-    for stations, k, expected_approx in test_cases:
-        result = min_max_gas_distance(stations, k)
-        print(f"Stations: {stations}, K={k}: Expected Approx={expected_approx}, Got={result}")
+            # 2. Define Search Space (Float Bounds)
+            
+            # Calculate max gap for the upper bound
+        max_gap = 0.0
+        for i in range(len(stations) - 1):
+            max_gap = max(max_gap, stations[i + 1] - stations[i])
+            
+        start = 0.0
+        end = max_gap
+        
+        # 3. Binary Search for Float Answer (Using Fixed Iterations for Precision)
+        # We run the loop for a fixed number of times (e.g., 100) instead of start <= end 
+        # to guarantee precision and avoid infinite loops with float arithmetic.
+        
+        for _ in range(100): 
+            mid = start + (end - start) / 2.0
+            
+            if check(stations, k, mid):
+                # Works! Store mid and try to minimize (search left).
+                end = mid
+            else:
+                # Doesn't work. Increase the distance (search right).
+                start = mid
+                
+        # After 100 iterations, 'end' will hold the minimum achievable maximum distance 
+        # with high precision.
+        return round(end, 5) # Return with reasonable precision
